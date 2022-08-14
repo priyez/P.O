@@ -1,0 +1,145 @@
+
+/*--------------------------
+    base settings
+---------------------------*/
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+  
+    // border: solid 2px red;
+}
+
+html {
+    font-size: 62.5%; // 10px
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    width: 100%;
+    height: 100%;
+    
+    @media only screen and (max-width: 62.5em) { // tab-land
+        font-size: 56.25%;
+    }
+    
+    @media only screen and (max-width: 56.25em) { // tab-port
+        font-size: 54%; 
+    }
+
+    @media only screen and (max-width: 37.5em) { // phone
+        font-size: 51%; 
+    }
+    
+    @media only screen and (min-width: 112.5em) { // big desktop
+        font-size: 75%; // 1rem = 12px, 12/16 = 75
+    }
+    
+}
+
+body{
+    margin: 0;
+    padding: 0;
+	background-color: $col-white;
+
+
+
+  @media only screen and (min-width: 370px) {
+            overflow-x: hidden;
+    }
+}
+
+
+
+// cursor
+.cursor {
+  pointer-events: none;
+
+  &__circle {
+    position: fixed;
+    top: 0;
+    left: 0;
+    mix-blend-mode: difference;
+    z-index: 10;
+    transform: translateX(-50%) translateY(-50%);
+    &--big {
+      stroke: #dedede;
+      fill: transparent;
+      mix-blend-mode: difference;
+      transform: translateX(-50%) translateY(-50%);
+    }
+    &--small {
+      fill: #dedede;
+      mix-blend-mode: difference;
+      transform: translateX(-50%) translateY(-50%);
+    }
+  }
+
+  &__plus {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    stroke: transparent;
+    fill: transparent;
+    mix-blend-mode: normal;
+    transform: translateX(-50%) translateY(-50%);
+    &--area {
+      stroke: transparent;
+    }
+  }
+}
+
+
+.preloader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    z-index: 25;
+    overflow: hidden;
+    background-color: transparent;
+    .l-box {
+        background-color: $col-black;
+        width: calc(100vw / 2);
+        height: 100vh;
+        z-index: 7;
+
+    }
+}
+
+
+
+
+/* Clip-path transition */
+.clip-enter {
+  clip-path: circle(0%);
+}
+
+.clip-enter-active {
+  transition: all 0.75s var(--easing);
+  position: absolute;
+  top: 0;
+  z-index: 2;
+}
+
+.clip-enter-to {
+  clip-path: circle(75%);
+}
+
+.clip-leave {
+  opacity: 1;
+}
+
+.clip-leave-active {
+  transition: all 0.75s var(--easing);
+}
+
+.clip-leave-to {
+  opacity: 0;
+}
